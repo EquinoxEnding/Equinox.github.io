@@ -356,6 +356,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2018/11/07/次短路/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Equinox">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/11/07/5be2a72d1eb69.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Equinox's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Equinox.github.io/2018/11/07/次短路/" itemprop="url">次短路</a></h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-07T18:42:12+08:00">2018-11-07</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Equinox.github.io/2018/11/07/次短路/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/07/次短路/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/Equinox.github.io/2018/11/07/次短路/" class="leancloud_visitors" data-flag-title="次短路">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="迷宫-maze"><a href="#迷宫-maze" class="headerlink" title="迷宫(maze)"></a>迷宫(maze)</h2><blockquote>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>　破了魔法阵后，亮亮进入了一座迷宫。这座迷宫叫做“梦境迷宫”，亮亮只 有走出这座迷宫，才能从睡梦中醒来。</p>
+<p>　梦境迷宫可以用无向图来表示。它共有 $ n $ 个点和 $ m $ 条双向道路，每条道路 都有边权，表示通过这条道路所需的时间，且每条道路可以多次经过。亮亮位于 一号点，而出口则是 $ n $ 号点。原本，亮亮该找到一条最短路，快速冲出迷宫，然 而，梦境迷宫的特殊之处在于，如果沿着最短路到达出口，亮亮就会永远陷入梦 境。因此，亮亮必须寻找一条次短路。次短路的长度须严格大于最短路（可以有多条）的长度，同时又不大于所有除最短路外的道路的长度。</p>
+<p>　你的任务，就是编写一个程序，帮助亮亮找到通向出口的次短路。</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>第一行有两个整数  $ n,m $，表示迷宫内共有 $ n $ 个点，$ m $ 条边。</p>
+<p>接下来 $ m $ 行，每行三个整数 $ x,y,z $ 表示结点  $ x $ 和 $ y $ 之间连有一条边权为 $ z $ 的无向边。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>一个整数，表示次短路的长度。</p>
+</blockquote>
+<p>这是某场我校模拟赛的T3,难得是这么水的一道T3,就是个次短路的板子题,但是我考场上就像失了智一样,没写出来…只好用一个不正确的贪心骗上30分走人</p>
+<p>其实你每次更新最短路的同时就能把次短路顺便更新/记录了,只需要再开一个_dis数组来记录次短路就行了</p>
+<p>更新的时候能更新最短路就更新最短路,否则次短路(最短路优先级还是比较高)</p>
+<p>然后….然后就没了,注意一下 细节就行了,哦,还有一点——</p>
+<p>#别忘了初始化！！！！！！</p>
+<p>这个代码的原型是enceladus大佬的板子合集中的,我Copy之后和同学们探讨了一下,搞明白了就自己写了一个,因为先入为主,所以难免长得像 $QwQ$</p>
+<p>Code:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pri_queue std::priority_queue</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pii std:: pair <span class="meta-string">&lt; int , int &gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp std:: make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> vec std::vector <span class="meta-string">&lt; pii &gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gret std::greater <span class="meta-string">&lt; pii &gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">5</span> ;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span> <span class="keyword">int</span> to , next , data ; &#125; e[N] ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n , m , tot , head[N] ;</span><br><span class="line"><span class="keyword">int</span> dis[N] , _dis[N] ;</span><br><span class="line">pri_queue &lt; pii , vec , gret &gt; q ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span> <span class="params">( <span class="keyword">int</span> u , <span class="keyword">int</span> v , <span class="keyword">int</span> w )</span></span>&#123;</span><br><span class="line">    e[++tot].next = head[u] ; e[tot].to = v ;</span><br><span class="line">    e[tot].data = w ; head[u] = tot ; <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">swap</span> <span class="params">( T &amp; x , T &amp; y )</span> </span>&#123; T t = x ; x = y ; y = t ; <span class="keyword">return</span> ; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Dijkstra</span> <span class="params">( <span class="keyword">int</span> cur )</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span> ( dis , <span class="number">0x3f</span> , <span class="keyword">sizeof</span> ( dis ) ) ;</span><br><span class="line">    <span class="built_in">memset</span> ( _dis , <span class="number">0x3f</span> , <span class="keyword">sizeof</span> ( _dis ) ) ;</span><br><span class="line">    dis[cur] = <span class="number">0</span> ; q.push ( mp ( dis[cur] , cur ) ) ;</span><br><span class="line">    <span class="keyword">while</span> ( ! q.empty ( ) )&#123;</span><br><span class="line">        pii tmp = q.top () ; q.pop () ;</span><br><span class="line">        <span class="keyword">int</span> j = tmp.second , val = tmp.first ;</span><br><span class="line">        <span class="keyword">if</span> ( _dis[j] &lt; val ) <span class="keyword">continue</span> ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = head[j] ; i ; i = e[i].next )&#123;</span><br><span class="line">            <span class="keyword">int</span> k = e[i].to , dist = val + e[i].data ;</span><br><span class="line">            <span class="keyword">if</span> ( dis[k] &gt; dist )&#123;</span><br><span class="line">                _dis[k] = dis[k] ;</span><br><span class="line">                swap( dis[k] , dist ) ;</span><br><span class="line">                q.push ( mp ( dis[k] , k ) ) ;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> ( _dis[k] &gt; dist &amp;&amp; dis[k] &lt; dist )&#123;</span><br><span class="line">                _dis[k] = dist ;</span><br><span class="line">                q.push ( mp( _dis[k] , k ) ) ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> (<span class="string">"%lld%lld"</span> , &amp; n , &amp; m ) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i)&#123;</span><br><span class="line">        <span class="keyword">register</span> <span class="keyword">int</span> u , v , w ;</span><br><span class="line">        <span class="built_in">scanf</span> (<span class="string">"%lld%lld%lld"</span> , &amp; u , &amp; v , &amp; w ) ;</span><br><span class="line">        build ( u , v , w ) ; build ( v , u , w ) ;</span><br><span class="line">    &#125;</span><br><span class="line">    Dijkstra ( <span class="number">1</span> ) ; <span class="built_in">printf</span> (<span class="string">"%lld\n"</span> , _dis[n] ) ;</span><br><span class="line">    system(<span class="string">"pause"</span>) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2018/11/07/清北-Day5-R2-xor/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1200,7 +1361,7 @@
       
         
           <p>题目描述</p>
-<!--�37-->
+<!--�26-->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/Equinox.github.io/2018/11/07/清北-Day5-R2-divide/#more" rel="contents">
@@ -1694,156 +1855,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2018/11/07/RDay1-Problem-3-C/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Equinox">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/11/07/5be2a72d1eb69.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Equinox's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Equinox.github.io/2018/11/07/RDay1-Problem-3-C/" itemprop="url">RDay1-Problem_3_C</a></h1>
-        
-
-        <div class="post-meta">
-          
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-07T17:33:57+08:00">2018-11-07</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/Equinox.github.io/2018/11/07/RDay1-Problem-3-C/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/07/RDay1-Problem-3-C/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/Equinox.github.io/2018/11/07/RDay1-Problem-3-C/" class="leancloud_visitors" data-flag-title="RDay1-Problem_3_C">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>题目描述<br>初始给定n个卡片拍成一排，其中第i个卡片上的数为x[i]。<br>有q个询问，每次询问给定L和R表示询问区间[L,R]内的卡片所有出现了偶数次的数的异或和是多少。 </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Equinox.github.io/2018/11/07/RDay1-Problem-3-C/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1893,7 +1904,7 @@
                 
                   <a href="/Equinox.github.io/archives">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
