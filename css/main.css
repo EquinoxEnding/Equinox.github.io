@@ -1833,7 +1833,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0ebf8f;
+  background: #0e5b61;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2934,7 +2934,7 @@ ul.breadcrumb li+li:last-child {
   }
 }
 body {
-  background: url("https://i.loli.net/2018/10/18/5bc7f8611e0ba.jpg");
+  background-image: url("/images/back.jpg");
 }
 .main-inner {
   opacity: 0.8;
