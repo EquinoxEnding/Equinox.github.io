@@ -146,17 +146,17 @@
   <meta name="keywords" content="Hexo, NexT">
 
 
-<meta name="description" content="迷宫(maze) Description　破了魔法阵后，亮亮进入了一座迷宫。这座迷宫叫做“梦境迷宫”，亮亮只 有走出这座迷宫，才能从睡梦中醒来。 　梦境迷宫可以用无向图来表示。它共有 $ n $ 个点和 $ m $ 条双向道路，每条道路 都有边权，表示通过这条道路所需的时间，且每条道路可以多次经过。亮亮位于 一号点，而出口则是 $ n $ 号点。原本，亮亮该找到一条最短路，快速冲出迷宫，然 而，梦">
+<meta name="description" content="迷宫(maze)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="次短路">
 <meta property="og:url" content="http://github.com/Equinox.github.io/2018/11/07/次短路/index.html">
 <meta property="og:site_name" content="Equinox&#39;s Blog">
-<meta property="og:description" content="迷宫(maze) Description　破了魔法阵后，亮亮进入了一座迷宫。这座迷宫叫做“梦境迷宫”，亮亮只 有走出这座迷宫，才能从睡梦中醒来。 　梦境迷宫可以用无向图来表示。它共有 $ n $ 个点和 $ m $ 条双向道路，每条道路 都有边权，表示通过这条道路所需的时间，且每条道路可以多次经过。亮亮位于 一号点，而出口则是 $ n $ 号点。原本，亮亮该找到一条最短路，快速冲出迷宫，然 而，梦">
+<meta property="og:description" content="迷宫(maze)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-07T10:51:54.286Z">
+<meta property="og:updated_time" content="2018-11-07T10:53:36.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="次短路">
-<meta name="twitter:description" content="迷宫(maze) Description　破了魔法阵后，亮亮进入了一座迷宫。这座迷宫叫做“梦境迷宫”，亮亮只 有走出这座迷宫，才能从睡梦中醒来。 　梦境迷宫可以用无向图来表示。它共有 $ n $ 个点和 $ m $ 条双向道路，每条道路 都有边权，表示通过这条道路所需的时间，且每条道路可以多次经过。亮亮位于 一号点，而出口则是 $ n $ 号点。原本，亮亮该找到一条最短路，快速冲出迷宫，然 而，梦">
+<meta name="twitter:description" content="迷宫(maze)">
 
 
 
@@ -447,7 +447,8 @@
       
 
       
-        <h2 id="迷宫-maze"><a href="#迷宫-maze" class="headerlink" title="迷宫(maze)"></a>迷宫(maze)</h2><blockquote>
+        <h2 id="迷宫-maze"><a href="#迷宫-maze" class="headerlink" title="迷宫(maze)"></a>迷宫(maze)</h2><a id="more"></a>
+<blockquote>
 <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>　破了魔法阵后，亮亮进入了一座迷宫。这座迷宫叫做“梦境迷宫”，亮亮只 有走出这座迷宫，才能从睡梦中醒来。</p>
 <p>　梦境迷宫可以用无向图来表示。它共有 $ n $ 个点和 $ m $ 条双向道路，每条道路 都有边权，表示通过这条道路所需的时间，且每条道路可以多次经过。亮亮位于 一号点，而出口则是 $ n $ 号点。原本，亮亮该找到一条最短路，快速冲出迷宫，然 而，梦境迷宫的特殊之处在于，如果沿着最短路到达出口，亮亮就会永远陷入梦 境。因此，亮亮必须寻找一条次短路。次短路的长度须严格大于最短路（可以有多条）的长度，同时又不大于所有除最短路外的道路的长度。</p>
 <p>　你的任务，就是编写一个程序，帮助亮亮找到通向出口的次短路。</p>
