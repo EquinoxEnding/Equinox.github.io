@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/Equinox.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/Equinox.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/Equinox.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Equinox.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/Equinox.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/Equinox.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/Equinox.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="题目描述    给出一个只包含左括号和右括号的字符串，插入若干左右括号（可以插在任意位置）之后使得字符串长度为$ 2\times n $ 且是一个合法的括号序列。求最后能组成多少种不同的合法括号序列。   【合法的括号序列：该序列任意一个前缀的左括号数大于等于右括号数,最终左括号数等于右括号数】  输入输入文件名为regular.in。    第一行一个数 $n$    第二行一个字符串（长度小于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Equinox&#39;s Blog">
+<meta property="og:url" content="http://github.com/Equinox.github.io/2018/11/07/清北-Day6-regular/index.html">
+<meta property="og:site_name" content="Equinox&#39;s Blog">
+<meta property="og:description" content="题目描述    给出一个只包含左括号和右括号的字符串，插入若干左右括号（可以插在任意位置）之后使得字符串长度为$ 2\times n $ 且是一个合法的括号序列。求最后能组成多少种不同的合法括号序列。   【合法的括号序列：该序列任意一个前缀的左括号数大于等于右括号数,最终左括号数等于右括号数】  输入输入文件名为regular.in。    第一行一个数 $n$    第二行一个字符串（长度小于">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-07T09:09:20.151Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Equinox&#39;s Blog">
+<meta name="twitter:description" content="题目描述    给出一个只包含左括号和右括号的字符串，插入若干左右括号（可以插在任意位置）之后使得字符串长度为$ 2\times n $ 且是一个合法的括号序列。求最后能组成多少种不同的合法括号序列。   【合法的括号序列：该序列任意一个前缀的左括号数大于等于右括号数,最终左括号数等于右括号数】  输入输入文件名为regular.in。    第一行一个数 $n$    第二行一个字符串（长度小于">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/Equinox.github.io/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://github.com/Equinox.github.io/2018/11/07/清北-Day6-regular/">
+
+
+
+
+
+  <title> | Equinox's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/Equinox.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Equinox's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">A zz's Blog.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/Equinox.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/Equinox.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2018/11/07/清北-Day6-regular/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Equinox">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/11/07/5be2a72d1eb69.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Equinox's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T17:05:58+08:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>题目描述<br>    给出一个只包含左括号和右括号的字符串，插入若干左右括号（可以插在任意位置）之后使得字符串长度为$ 2\times n $ 且是一个合法的括号序列。求最后能组成多少种不同的合法括号序列。<br>   【合法的括号序列：该序列任意一个前缀的左括号数大于等于右括号数,最终左括号数等于右括号数】 </p>
+<p>输入<br>输入文件名为regular.in。<br>    第一行一个数 $n$<br>    第二行一个字符串（长度小于等于 $ 2\times n $ ） </p>
+<p>输出<br>输出文件名为regular.out。<br>    输出一个数，表示答案 $ \pmod {10^9 + 7} $</p>
+<p>样例输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">()</span><br></pre></td></tr></table></figure></p>
+<p>样例输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure></p>
+<p>提示<br>【数据说明】<br>对于50%的数据，$ 1 \le n \le 10 $ </p>
+<p>对于100%的数据，$ 1 \le n \le 100 $</p>
+<p>这个题…从学术角度来看,不失为一道好题,但是从我个人感情角度来看,就是道破题,为什么？——题目具有迷惑性…导致我考虑错误的思路半天…..我一开始错误的思路就是把一共能有多少对括号算出来<br>然后用Catlan数求解,不过这个思路为什么错了,我还不是很清楚…<br>说说正解的思路吧——DP:<br>这里采用了三维, $ dp_{ i , j , k } $ 表示插入 $ i $ 个括号,使用了原来的 $ j $ 个括号,现在左括号比右括号多 $ k $ 个的方案数<br>看起来挺麻烦的是吧….确实挺麻烦,一共有四个状态转移方程——使用原序列的左括号,插入一个左括号,使用原序列的右括号,插入一个右括号,这分别是四个方程的意义<br>我们考虑,枚举三维状态进行转移<br>当我们当前有一个左括号时,我们就要采用前两种转移,枚举到一个位置并且不是末位的时候,我们当然可以选择使用一个原序列的左括号或者再插入一个左括号,显然这样一定合法<br>同理,当我们有一个右括号时,我们应该采用后两种转移,枚举到一个位置并且不是末位的时候,我们当然也可以选择使用一个原序列的右括号或者再插入一个右括号,显然这样也是合法的.<br>最后的答案自然是在 $ dp_{ i \times 2 - m , m , 0} $ 中了<br>代码如下:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> LL mod = <span class="number">1e9</span> + <span class="number">7</span> ;</span><br><span class="line"></span><br><span class="line">LL dp[<span class="number">220</span>][<span class="number">220</span>][<span class="number">220</span>],n,m;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">10000</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span> (<span class="string">"%lld"</span> , &amp; n );</span><br><span class="line">	<span class="built_in">scanf</span> (<span class="string">"%s"</span> , s );</span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span> ; m = <span class="built_in">strlen</span> ( s ) ;</span><br><span class="line">	<span class="keyword">register</span> LL maxf = ( n &lt;&lt; <span class="number">1</span> ) - m ;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt;= maxf ; ++ i)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span> ; j &lt;= m ; ++ j)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span> ; k &lt;= n ; ++ k)&#123;</span><br><span class="line">				<span class="keyword">if</span> ( s[j] == <span class="string">'('</span> &amp;&amp; j &lt; m )</span><br><span class="line">					dp[ i ][ j + <span class="number">1</span> ][ k + <span class="number">1</span> ] = ( dp [ i ][ j ][ k ] + dp[ i ][ j + <span class="number">1</span> ][ k + <span class="number">1</span> ] ) % mod ;</span><br><span class="line">				<span class="keyword">else</span> dp[ i + <span class="number">1</span> ][ j ][ k + <span class="number">1</span> ] = ( dp [ i ][ j ][ k ] + dp[ i + <span class="number">1</span> ][ j ][ k + <span class="number">1</span> ] ) % mod ;</span><br><span class="line">				<span class="keyword">if</span> ( k )&#123;</span><br><span class="line">					<span class="keyword">if</span> ( s[j] == <span class="string">')'</span> &amp;&amp; j &lt; m )</span><br><span class="line">						dp[ i ][ j + <span class="number">1</span> ][ k - <span class="number">1</span> ] = ( dp [ i ][ j ][ k ] + dp[ i ][ j + <span class="number">1</span> ][ k - <span class="number">1</span> ] ) % mod ;</span><br><span class="line">					<span class="keyword">else</span> dp[ i + <span class="number">1</span> ][ j ][ k - <span class="number">1</span> ] = ( dp [ i ][ j ][ k ] + dp[ i + <span class="number">1</span> ][ j ][ k - <span class="number">1</span> ] ) % mod ;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="built_in">printf</span> (<span class="string">"%lld\n"</span> , dp[maxf][m][<span class="number">0</span>] % mod );</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Equinox.github.io/2018/11/07/RDay1-Problem 1 A/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Equinox.github.io/2018/11/07/清北-Day5-R2-divide/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2018/11/07/5be2a72d1eb69.jpg" alt="Equinox">
+            
+              <p class="site-author-name" itemprop="name">Equinox</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/Equinox.github.io/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Equinox</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/Equinox.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Equinox.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Equinox.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Equinox.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Equinox.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Equinox.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/Equinox.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/Equinox.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/Equinox.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/Equinox.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/Equinox.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/Equinox.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/Equinox.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

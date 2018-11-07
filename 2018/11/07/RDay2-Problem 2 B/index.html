@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/Equinox.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/Equinox.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/Equinox.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Equinox.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/Equinox.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/Equinox.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/Equinox.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="题目描述小明家有n个信箱，前前后后来送信和取信的总次数为q，称为q次访问，其中这q次访问分成三种类型。1：邮递员送来了一封信，放在了x号信箱。2：小明取走了x号信箱的所有信（x信箱可能已经没有信了）。3：小明取走了前t封送来的信（前t封表示从送来的第一封到送来的第t封，其中这t封信可能已经通过第二类或者之前的第三类访问取走了）小明现在想要知道每一次访问之后，有多少封信时没有取走的，由于送来的信太多">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Equinox&#39;s Blog">
+<meta property="og:url" content="http://github.com/Equinox.github.io/2018/11/07/RDay2-Problem 2 B/index.html">
+<meta property="og:site_name" content="Equinox&#39;s Blog">
+<meta property="og:description" content="题目描述小明家有n个信箱，前前后后来送信和取信的总次数为q，称为q次访问，其中这q次访问分成三种类型。1：邮递员送来了一封信，放在了x号信箱。2：小明取走了x号信箱的所有信（x信箱可能已经没有信了）。3：小明取走了前t封送来的信（前t封表示从送来的第一封到送来的第t封，其中这t封信可能已经通过第二类或者之前的第三类访问取走了）小明现在想要知道每一次访问之后，有多少封信时没有取走的，由于送来的信太多">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-07T09:09:59.437Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Equinox&#39;s Blog">
+<meta name="twitter:description" content="题目描述小明家有n个信箱，前前后后来送信和取信的总次数为q，称为q次访问，其中这q次访问分成三种类型。1：邮递员送来了一封信，放在了x号信箱。2：小明取走了x号信箱的所有信（x信箱可能已经没有信了）。3：小明取走了前t封送来的信（前t封表示从送来的第一封到送来的第t封，其中这t封信可能已经通过第二类或者之前的第三类访问取走了）小明现在想要知道每一次访问之后，有多少封信时没有取走的，由于送来的信太多">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/Equinox.github.io/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://github.com/Equinox.github.io/2018/11/07/RDay2-Problem 2 B/">
+
+
+
+
+
+  <title> | Equinox's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/Equinox.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Equinox's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">A zz's Blog.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/Equinox.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/Equinox.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2018/11/07/RDay2-Problem 2 B/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Equinox">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/11/07/5be2a72d1eb69.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Equinox's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T17:05:59+08:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>题目描述<br>小明家有n个信箱，前前后后来送信和取信的总次数为q，称为q次访问，其中这q次访问分成三种类型。<br>1：邮递员送来了一封信，放在了x号信箱。<br>2：小明取走了x号信箱的所有信（x信箱可能已经没有信了）。<br>3：小明取走了前t封送来的信（前t封表示从送来的第一封到送来的第t封，其中这t封信可能已经通过第二类或者之前的第三类访问取走了）<br>小明现在想要知道每一次访问之后，有多少封信时没有取走的，由于送来的信太多，小明想请学oi的你来解答。 </p>
+<p>输入<br>输入文件B.in </p>
+<p>第一行两个整数n，q。 </p>
+<p>接下来q行，每行最开始一个整数type </p>
+<p>若type=1紧接着一个整数x，表示第一类操作。 </p>
+<p>若type=2紧接着一个整数x，表示第二类操作。 </p>
+<p>若type=3紧接着一个整数t，表示第三类操作。 </p>
+<p>输出<br>输出文件B.out </p>
+<p>对于每一次访问，输出访问结束时剩下多少信还没有被取走。 </p>
+<p>样例输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3 4</span><br><span class="line">1 3</span><br><span class="line">1 1</span><br><span class="line">1 2</span><br><span class="line">2 3</span><br></pre></td></tr></table></figure></p>
+<p>样例输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">2</span><br></pre></td></tr></table></figure></p>
+<p>提示<br>【样例输入2】<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">4 6 </span><br><span class="line">1 2 </span><br><span class="line">1 4 </span><br><span class="line">1 2 </span><br><span class="line">3 3 </span><br><span class="line">1 3 </span><br><span class="line">1 3</span><br></pre></td></tr></table></figure></p>
+<p>【样例输出2】<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1 </span><br><span class="line">2 </span><br><span class="line">3 </span><br><span class="line">0 </span><br><span class="line">1 </span><br><span class="line">2</span><br></pre></td></tr></table></figure></p>
+<p>【数据范围】<br>对于30%的数据，$ n，q \le 1000 $<br>对于另外20%的数据，没有三操作。<br>对于100%的数据，$ n，q \le 300000 $</p>
+<p>这个题说来我挺zz的,完全不知道自己在想什么…..<br>直接线段树 + 链表就能怼过去的事,结果我非要写线段树 + 时间戳 + 删除线段<br>这不是给自己找麻烦嘛….于是写了一会儿果断放弃(反正本来也不太会)<br>于是就开始 $YY$ 怎么写链表了,写的时候被自己蠢到哭,单点修改非要写成左右端点相同的区间修改<br>觉得不用自上向下更新,就死活不想写 $ tag $ ,结果就是一直WA…..<br>改正之后好歹能过了~~<br>用线段树维护链表,其实是一堆链表…有点邻接表的意思<br>然后每次操作是对链表的,注意 $ 2 $ 操作别忘了把一整个链表删干净…最后别忘了重置链表<br>$ 3 $ 操作直接在线段树上区间修改就行了,也不难<br>$ 1 $ 操作先在插入链表再更新至线段树,注意线段树维护的是链表就行了<br>代码如下:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Noip2018RpINF return 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ls ( rt &lt;&lt; 1 )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rs ( rt &lt;&lt; 1 | 1 )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid ( ( l + r ) &gt;&gt; 1 )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pushup(rt) t[rt].data = t[ls].data + t[rs].data</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> LL N = <span class="number">3e5</span> + <span class="number">5</span> ;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">seg</span>&#123;</span></span><br><span class="line">	LL left , right ;</span><br><span class="line">	LL data , tag;</span><br><span class="line">&#125;t[ ( N &lt;&lt; <span class="number">2</span> ) ];</span><br><span class="line"></span><br><span class="line">LL n , m , x , tot ;</span><br><span class="line">LL opt , pre[N] , nxt[N] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span> <span class="params">( LL rt , LL l , LL r )</span></span>&#123;</span><br><span class="line">	t[rt].left = l ; t[rt].right = r ;</span><br><span class="line">	<span class="keyword">if</span> ( l == r ) <span class="keyword">return</span> ;</span><br><span class="line">	build ( ls , l , mid ) ; build ( rs , mid + <span class="number">1</span> , r ) ;</span><br><span class="line">	pushup(rt) ; <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span> <span class="params">(LL rt , LL pos)</span></span>&#123;</span><br><span class="line">	LL l = t[rt].left , r = t[rt].right ;</span><br><span class="line">	<span class="keyword">if</span> ( l == r ) &#123; t[rt].data = <span class="number">1</span> ; <span class="keyword">return</span> ; &#125;</span><br><span class="line">	<span class="keyword">if</span> ( pos &lt;= mid ) insert ( ls , pos ) ;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> ( pos &gt; mid ) insert ( rs , pos );</span><br><span class="line">	pushup (rt) ; <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">delet</span> <span class="params">(LL rt , LL ll , LL rr)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (t[rt].tag) <span class="keyword">return</span> ;<span class="comment">//现在来看,不写tag真是太zz了</span></span><br><span class="line">	LL l = t[rt].left , r = t[rt].right ;</span><br><span class="line">	<span class="keyword">if</span> ( ll &lt;= l &amp;&amp; r &lt;= rr ) &#123; t[rt].data = <span class="number">0</span> ; t[rt].tag = <span class="number">1</span> ; <span class="keyword">return</span> ; &#125;</span><br><span class="line">	<span class="keyword">if</span> ( ll &lt;= mid ) delet( ls , ll , rr );</span><br><span class="line">	<span class="keyword">if</span> ( rr &gt; mid ) delet( rs , ll , rr );</span><br><span class="line">	pushup(rt) ; <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Rinsert</span> <span class="params">(LL x)</span></span>&#123;</span><br><span class="line">	nxt[++tot] = pre[x] ; pre[x] = tot ;</span><br><span class="line">	insert( <span class="number">1</span> , tot ) ; <span class="keyword">return</span> ; <span class="comment">//把修改tot写成修改x真是太zz了</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Rdelete</span> <span class="params">(LL x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = pre[x] ; i ; i = nxt[i] )</span><br><span class="line">		delet( <span class="number">1</span> , i , i );</span><br><span class="line">	pre[x] = <span class="number">0</span> ;<span class="comment">//忘了归零真是太zz了</span></span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span> (<span class="string">"%lld%lld"</span> , &amp; n , &amp; m );</span><br><span class="line">	build( <span class="number">1</span> , <span class="number">1</span> , m ) ;<span class="comment">//忘了建树真是太zz了(太真实了) </span></span><br><span class="line">	<span class="keyword">while</span> ( m -- )&#123;</span><br><span class="line">		<span class="built_in">scanf</span> (<span class="string">"%lld%lld"</span> , &amp; opt , &amp; x ) ;</span><br><span class="line">		<span class="keyword">if</span> ( opt == <span class="number">1</span> ) Rinsert ( x ) ;</span><br><span class="line">		<span class="keyword">if</span> ( opt == <span class="number">2</span> ) Rdelete ( x ) ;</span><br><span class="line">		<span class="keyword">if</span> ( opt == <span class="number">3</span> ) delet( <span class="number">1</span> , <span class="number">1</span> , x ) ;</span><br><span class="line">		<span class="built_in">printf</span> (<span class="string">"%lld\n"</span> , t[<span class="number">1</span>].data ) ;</span><br><span class="line">	&#125;</span><br><span class="line">	Noip2018RpINF ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Equinox.github.io/2018/11/07/清北-Day5-R2-divide/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Equinox.github.io/2018/11/07/LuoGu P1168 中位数/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2018/11/07/5be2a72d1eb69.jpg" alt="Equinox">
+            
+              <p class="site-author-name" itemprop="name">Equinox</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/Equinox.github.io/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Equinox</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/Equinox.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Equinox.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Equinox.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Equinox.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Equinox.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Equinox.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/Equinox.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/Equinox.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/Equinox.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/Equinox.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/Equinox.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/Equinox.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/Equinox.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
