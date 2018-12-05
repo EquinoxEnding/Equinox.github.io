@@ -356,6 +356,330 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2018/12/05/NOIP2018Day1T2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Equinox">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/11/25/5bfa529852e93.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Equinox's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Equinox.github.io/2018/12/05/NOIP2018Day1T2/" itemprop="url">NOIP2018Day1T2</a></h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-05T19:20:55+08:00">2018-12-05</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Equinox.github.io/2018/12/05/NOIP2018Day1T2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/05/NOIP2018Day1T2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/Equinox.github.io/2018/12/05/NOIP2018Day1T2/" class="leancloud_visitors" data-flag-title="NOIP2018Day1T2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在网友的国度中共有 $n$ 种不同面额的货币，第 $i$ 种货币的面额为 $a[i]$，你可以假设每一种货币都有无穷多张。为了方便，我们把货币种数为 $n$、面额数组为 $a[1..n]$ 的货币系统记作 $(n,a)$。</p>
+<p>在一个完善的货币系统中，每一个非负整数的金额 $x$ 都应该可以被表示出，即对每一个非负整数 $x$，都存在 $n$ 个非负整数 $t[i]$ 满足 $a[i] \times t[i]$ 的和为 $x$。然而， 在网友的国度中，货币系统可能是不完善的，即可能存在金额 xx不能被该货币系统表示出。例如在货币系统 $n=3, a=[2,5,9]$ 中，金额 $1,3$ 就无法被表示出来。</p>
+<p>两个货币系统 $(n,a)$ 和 $(m,b)$ 是等价的，当且仅当对于任意非负整数 $x$，它要么均可以被两个货币系统表出，要么不能被其中任何一个表出。</p>
+<p>现在网友们打算简化一下货币系统。他们希望找到一个货币系统 $(m,b)$，满足 $(m,b)$ 与原来的货币系统 $(n,a)$ 等价，且 $m$ 尽可能的小。他们希望你来协助完成这个艰巨的任务：找到最小的 $m$。</p>
+<h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p>输入文件的第一行包含一个整数 $T$，表示数据的组数。</p>
+<p>接下来按照如下格式分别给出 TT 组数据。 每组数据的第一行包含一个正整数 $n$。接下来一行包含 $n$ 个由空格隔开的正整数 $a[i]$。</p>
+<p>输出文件共有 $T$ 行，对于每组数据，输出一行一个正整数，表示所有与 $(n,a)$ 等价的货币系统 $(m,b)$ 中，最小的 $m$ 。</p>
+<h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p>输入样例1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2 </span><br><span class="line">4 </span><br><span class="line">3 19 10 6 </span><br><span class="line">5 </span><br><span class="line">11 29 13 19 17</span><br></pre></td></tr></table></figure>
+<p>输出样例1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2   </span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>在第一组数据中，货币系统 $(2, [3,10])$ 和给出的货币系统 $(n, a)$ 等价，并可以验证不存在 $m &lt; 2$ 的等价的货币系统，因此答案为 $2$ 。 在第二组数据中，可以验证不存在 $m &lt; n$  的等价的货币系统，因此答案为 $5$ 。</p>
+<p>【数据范围与约定】</p>
+<p><img src="https://cdn.luogu.org/upload/pic/43160.png" alt="img"></p>
+<p>对于 $100\%$ 的数据，满足 $1 ≤ T ≤ 20, n,a[i] ≥ 1$</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>简略题意:给定一个集合 $A$ 让你找出一个集合 $B$ 使得 $A$ 中的所有元素都能被 $B$ 中的一个和多个元素表示出来 $,$ 要求 $B$ 的元素尽量少 $,$ 求 $B$ 中最少的元素个数</p>
+<p>先排个序 $,$ 一个数字一定只能由比它本身小的数字通过累加得到 $,$ 枚举 $A$ 中的所有元素 $,$ 然后用判定性完全背包来确定哪一个数字能被表示 $,$ 每有一个数字能被表示 $,$ 就把原先等于 $n$ 的 $ans–$ 最后输出 $ans$ 就完了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e2</span> + <span class="number">10</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">2e4</span> + <span class="number">5e3</span> + <span class="number">5</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T , a[N] ;</span><br><span class="line"><span class="keyword">int</span> cnt , n ;</span><br><span class="line"><span class="keyword">int</span> f[M] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> (<span class="string">"%d"</span> , &amp; T ) ;</span><br><span class="line">    <span class="keyword">while</span> ( T -- )&#123;</span><br><span class="line">        <span class="built_in">scanf</span> (<span class="string">"%d"</span> , &amp; n ) ; <span class="built_in">memset</span> ( f , <span class="number">0</span> , <span class="keyword">sizeof</span> ( f ) ) ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i) <span class="built_in">scanf</span> (<span class="string">"%d"</span> , &amp; a[i]) ;</span><br><span class="line">        <span class="built_in">std</span>::sort ( a + <span class="number">1</span> , a + n + <span class="number">1</span> ) ; f[<span class="number">0</span>] = <span class="number">1</span> ; cnt = n ;<span class="comment">// 0 显然可以被任何集合表示</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)&#123;</span><br><span class="line">            <span class="keyword">if</span> ( f[a[i]] ) &#123; -- cnt ; <span class="keyword">continue</span> ; &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = a[i] ; j &lt;= a[n] ; ++ j)</span><br><span class="line">                f[j] = f[j] | f[j-a[i]] ; <span class="comment">//如果 j-a[i] 能被表示,那么显然j也能被表示</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span> (<span class="string">"%d\n"</span> , cnt ) ;</span><br><span class="line">    &#125;</span><br><span class="line">    system (<span class="string">"pause"</span>) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2018/12/05/NOIP2018Day1T1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Equinox">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/11/25/5bfa529852e93.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Equinox's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Equinox.github.io/2018/12/05/NOIP2018Day1T1/" itemprop="url">NOIP2018Day1T1</a></h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-05T19:07:16+08:00">2018-12-05</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Equinox.github.io/2018/12/05/NOIP2018Day1T1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/05/NOIP2018Day1T1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/Equinox.github.io/2018/12/05/NOIP2018Day1T1/" class="leancloud_visitors" data-flag-title="NOIP2018Day1T1">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>春春是一名道路工程师，负责铺设一条长度为 $n$ 的道路。</p>
+<p>铺设道路的主要工作是填平下陷的地表。整段道路可以看作是 $n$ 块首尾相连的区域，一开始，第 $i$ 块区域下陷的深度为 $d_i$ 。</p>
+<p>春春每天可以选择一段连续区间 $[L,R]$ ，填充这段区间中的每块区域，让其下陷深度减少 $1$。在选择区间时，需要保证，区间内的每块区域在填充前下陷深度均不为 $0$ 。</p>
+<p>春春希望你能帮他设计一种方案，可以在最短的时间内将整段道路的下陷深度都变为 $0$ 。</p>
+<h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p>输入文件包含两行，第一行包含一个整数 $n$，表示道路的长度。 第二行包含 $n$ 个整数，相邻两数间用一个空格隔开，第 $i$ 个整数为 $d_i$.</p>
+<p>输出文件仅包含一个整数，即最少需要多少天才能完成任务。</p>
+<h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p>输入样例1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6   </span><br><span class="line">4 3 2 5 3 5</span><br></pre></td></tr></table></figure>
+<p>输出样例1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9</span><br></pre></td></tr></table></figure>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>【样例解释】</p>
+<p>一种可行的最佳方案是，依次选择: $[1,6],[1,6],[1,2],[1,1],[4,6],[4,4],[4,4],[6,6],[6,6]$ </p>
+<p>【数据规模与约定】</p>
+<p>对于 $30\%$ 的数据，$1 ≤ n ≤ 10$<br>对于 $70\%$ 的数据，$1 ≤ n ≤ 1000$<br>对于 $100\%$ 的数据，$1 ≤ n ≤ 100000 , 0 ≤ d_i ≤ 10000$</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>水题不解释了 $,$ 考场上自己写成了90分 (因为我菜到写了个双指针去卡 $\Theta(n^2)$ , 不知道在想啥….</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code :"></a>Code :</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ans , n , t , last ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> (<span class="string">"%d"</span> , &amp; n ) ;</span><br><span class="line">    <span class="built_in">scanf</span> (<span class="string">"%d"</span> , &amp; last ) ; ans = last ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span> ; i &lt;= n ; ++ i)&#123;</span><br><span class="line">        <span class="built_in">scanf</span> (<span class="string">"%d"</span> , &amp; t ) ;</span><br><span class="line">        <span class="keyword">if</span> ( t &gt; last ) ans += ( t - last );</span><br><span class="line">        last = t ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span> (<span class="string">"%d\n"</span> , ans ) ;</span><br><span class="line">    system (<span class="string">"pause"</span>) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2018/11/25/NOIP2018游记/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1502,310 +1826,10 @@
       
         
           <p>题目描述</p>
-<!--�26-->
+<!--�50-->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/Equinox.github.io/2018/11/07/清北-Day5-R2-divide/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2018/11/07/RDay2-Problem-2-B/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Equinox">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/11/25/5bfa529852e93.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Equinox's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Equinox.github.io/2018/11/07/RDay2-Problem-2-B/" itemprop="url">RDay2-Problem_2_B</a></h1>
-        
-
-        <div class="post-meta">
-          
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-07T17:35:59+08:00">2018-11-07</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/Equinox.github.io/2018/11/07/RDay2-Problem-2-B/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/07/RDay2-Problem-2-B/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/Equinox.github.io/2018/11/07/RDay2-Problem-2-B/" class="leancloud_visitors" data-flag-title="RDay2-Problem_2_B">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>题目描述<br>小明家有n个信箱，前前后后来送信和取信的总次数为q，称为q次访问，其中这q次访问分成三种类型。 </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Equinox.github.io/2018/11/07/RDay2-Problem-2-B/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2018/11/07/RDay2-Problem-1-A/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Equinox">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/11/25/5bfa529852e93.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Equinox's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Equinox.github.io/2018/11/07/RDay2-Problem-1-A/" itemprop="url">RDay2-Problem_1_A</a></h1>
-        
-
-        <div class="post-meta">
-          
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-07T17:35:23+08:00">2018-11-07</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/Equinox.github.io/2018/11/07/RDay2-Problem-1-A/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/07/RDay2-Problem-1-A/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/Equinox.github.io/2018/11/07/RDay2-Problem-1-A/" class="leancloud_visitors" data-flag-title="RDay2-Problem_1_A">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>题目描述<br>初始给你一个排列p[i],你可以执行以下操作任意多次。<br>选择一个i，交换p[i]和p[i+1]的值（其实就是交换排列当中两个相邻的元素）。<br>我们现在希望对于任意的i满足p[i]不等于i，求最少需要执行的操作次数。 </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Equinox.github.io/2018/11/07/RDay2-Problem-1-A/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1895,7 +1919,7 @@
                 
                   <a href="/Equinox.github.io/archives">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
