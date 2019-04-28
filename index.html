@@ -356,6 +356,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2019/04/28/飞行员配对方案问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Equinox">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/12/31/5c29782e9fca0.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Equinox's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Equinox.github.io/2019/04/28/飞行员配对方案问题/" itemprop="url">飞行员配对方案问题</a></h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-28T19:28:06+08:00">2019-04-28</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Equinox.github.io/2019/04/28/飞行员配对方案问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/28/飞行员配对方案问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/Equinox.github.io/2019/04/28/飞行员配对方案问题/" class="leancloud_visitors" data-flag-title="飞行员配对方案问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="飞行员配对方案问题"><a href="#飞行员配对方案问题" class="headerlink" title="飞行员配对方案问题"></a>飞行员配对方案问题</h1><p><a href="https://www.luogu.org/problemnew/show/P2756" target="_blank" rel="noopener">传送门</a></p>
+<p>读完题,就知道这就是个裸的二分图皮配,然后,我还是不说匈牙利,(因为我真的不会啊!)</p>
+<p>所以,我还是用了喜闻乐见的 $Dinic$ 并且跑的也不慢.唯一难点就是输出方案了吧…输出方案用最后的连通性判断,这题就没了….</p>
+<p>$Code:$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">5</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1061109567</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">queue</span> ;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span> <span class="keyword">int</span> to , next , flow ; &#125; e[(N&lt;&lt;<span class="number">1</span>)] ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> tot = <span class="number">1</span> , head[N] , flor[N] , s , t , n , m , x , y ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span> <span class="params">(<span class="keyword">int</span> u , <span class="keyword">int</span> v ,<span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">    e[++tot].next = head[u] ; e[tot].to = v ;</span><br><span class="line">    e[tot].flow = w ; head[u] = tot ; <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">queue</span> &lt; <span class="keyword">int</span> &gt; q ;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">bfs</span> <span class="params">( <span class="keyword">int</span> cur )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> ( ! q.empty () ) q.pop () ;</span><br><span class="line">    <span class="built_in">memset</span> ( flor , <span class="literal">false</span> , <span class="keyword">sizeof</span> ( flor ) ) ;</span><br><span class="line">    q.push ( cur ) ; flor[cur] = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">while</span> ( ! q.empty () ) &#123;</span><br><span class="line">        <span class="keyword">int</span> j = q.front () ; q.pop () ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = head[j] ; i ; i = e[i].next) &#123;</span><br><span class="line">            <span class="keyword">int</span> k = e[i].to ;</span><br><span class="line">            <span class="keyword">if</span> ( ! flor[k] &amp;&amp; e[i].flow ) &#123;</span><br><span class="line">                flor[k] = flor[j] + <span class="number">1</span> ;</span><br><span class="line">                <span class="keyword">if</span> ( k == t ) <span class="keyword">return</span> flor[t] ;</span><br><span class="line">                q.push ( k ) ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> flor[t] ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">dfs</span> <span class="params">(<span class="keyword">int</span> cur , <span class="keyword">int</span> dist)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( cur == t ) <span class="keyword">return</span> dist ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = head[cur] ; i ; i = e[i].next) &#123;</span><br><span class="line">        <span class="keyword">int</span> k = e[i].to ;</span><br><span class="line">        <span class="keyword">if</span> ( flor[k] == flor[cur] + <span class="number">1</span> &amp;&amp; e[i].flow ) &#123;</span><br><span class="line">            <span class="keyword">int</span> now = dfs ( k , <span class="built_in">std</span>::min ( e[i].flow , dist ) ) ;</span><br><span class="line">            <span class="keyword">if</span> ( now != <span class="number">0</span> ) &#123;</span><br><span class="line">                e[i].flow -= now ;</span><br><span class="line">                e[i^<span class="number">1</span>].flow += now ;</span><br><span class="line">                <span class="keyword">return</span> now ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Dinic</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">while</span> ( bfs ( s ) )</span><br><span class="line">        <span class="keyword">while</span> ( <span class="keyword">int</span> now = dfs ( s , INF ) )</span><br><span class="line">            ans += now ;</span><br><span class="line">    <span class="keyword">return</span> ans ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> (<span class="string">"%d%d"</span> , &amp; m , &amp; n ) ; s = <span class="number">0</span> ; t = n + <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i) build ( s , i , <span class="number">1</span> ) , build ( i , s , <span class="number">0</span> ) ; <span class="comment">// 连外籍</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = m + <span class="number">1</span> ; i &lt;= n ; ++ i) build ( i , t , <span class="number">1</span> ) , build ( t , i , <span class="number">0</span> ) ; <span class="comment">// 连皇家</span></span><br><span class="line">    <span class="keyword">while</span> ( <span class="built_in">scanf</span> (<span class="string">"%d%d"</span> , &amp; x , &amp; y ) &amp;&amp; x != - <span class="number">1</span> &amp;&amp; y != - <span class="number">1</span> )</span><br><span class="line">        build ( x , y , <span class="number">1</span> ) , build ( y , x , <span class="number">0</span> ) ;</span><br><span class="line">    <span class="keyword">int</span> ans = Dinic () ;</span><br><span class="line">    <span class="keyword">if</span> ( ! ans ) &#123; <span class="built_in">puts</span> (<span class="string">"No Solution!"</span>) ; <span class="keyword">return</span> <span class="number">0</span> ; &#125;</span><br><span class="line">    <span class="built_in">printf</span> (<span class="string">"%d\n"</span> , ans  ) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span> ; i &lt;= tot ; i += <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">if</span> ( e[i].to != s &amp;&amp; e[i^<span class="number">1</span>].to != s )</span><br><span class="line">            <span class="keyword">if</span> ( e[i].to != t &amp;&amp; e[i^<span class="number">1</span>].to != t )</span><br><span class="line">                <span class="keyword">if</span> ( e[i^<span class="number">1</span>].flow != <span class="number">0</span> ) <span class="built_in">printf</span> (<span class="string">"%d %d\n"</span> , e[i^<span class="number">1</span>].to , e[i].to ) ;</span><br><span class="line">    system (<span class="string">"pause"</span>) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2019/04/28/USACO15DEC最大流MaxFlow/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1705,158 +1855,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2018/11/25/NOIP2018游记/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Equinox">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/12/31/5c29782e9fca0.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Equinox's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Equinox.github.io/2018/11/25/NOIP2018游记/" itemprop="url">NOIP2018游记</a></h1>
-        
-
-        <div class="post-meta">
-          
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-25T16:41:40+08:00">2018-11-25</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/Equinox.github.io/2018/11/25/NOIP2018游记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/25/NOIP2018游记/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/Equinox.github.io/2018/11/25/NOIP2018游记/" class="leancloud_visitors" data-flag-title="NOIP2018游记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="NOIP-2018-游记"><a href="#NOIP-2018-游记" class="headerlink" title="NOIP 2018 游记"></a>NOIP 2018 游记</h1><p>又是一年NOIP呢…第二次参加了,希望这一次能不再擦线吧…毕竟我真的很想去WC,也很想去省选.</p>
-<p>最后悔的事就是在初三了,恰逢直升,大好年华,停课学OI,但我竟然在某两位dalao带领下搓了一年炉石 &amp; SC2 ？！</p>
-<p>甚至至今没退坑……</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Equinox.github.io/2018/11/25/NOIP2018游记/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1905,7 +1903,7 @@
                 
                   <a href="/Equinox.github.io/archives">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
