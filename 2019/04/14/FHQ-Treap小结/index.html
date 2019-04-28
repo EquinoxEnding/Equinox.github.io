@@ -153,7 +153,7 @@
 <meta property="og:site_name" content="Equinox&#39;s Blog">
 <meta property="og:description" content="FHQ-Treap小结$Orz$ 范浩强大爷,竟然搞出了如此夺天地造化的数据结构. $FHQ-Treap$,又名非旋$Treap$,是范浩强大爷在某些奇特的灵感之下发明的一种平衡树,因其与$Treap$相似的性质和无旋转操作的特性被称为非旋$Treap$.非旋$Treap$用$Split$和$merge$两个操作维护平衡,其本质是堆的合并.(左偏树?)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-14T11:58:42.377Z">
+<meta property="og:updated_time" content="2019-04-28T08:46:51.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FHQ-Treap小结">
 <meta name="twitter:description" content="FHQ-Treap小结$Orz$ 范浩强大爷,竟然搞出了如此夺天地造化的数据结构. $FHQ-Treap$,又名非旋$Treap$,是范浩强大爷在某些奇特的灵感之下发明的一种平衡树,因其与$Treap$相似的性质和无旋转操作的特性被称为非旋$Treap$.非旋$Treap$用$Split$和$merge$两个操作维护平衡,其本质是堆的合并.(左偏树?)">
@@ -479,7 +479,8 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Getkth ( root , Getrank ( root , key + <span class="number">1</span> ) + <span class="number">1</span> )</span><br></pre></td></tr></table></figure>
 <p>这几个相信各位一看就懂,也就不再赘述了.</p>
 <p>我个人认为$FHQ-Treap$是最容易理解的平衡树,而且码量也较小,很适合像博主这样的蒟蒻学习.</p>
-
+<p>$Added$ :<br>最近又发现了 $FHQTreap$ 的另一种 $Split$ 的方式:按权值分裂<br>就是把整棵树按照权值分裂成一半比 $key​$ 大的,一半比 $key​$ 小的<br>有的时候,这种分裂有奇效<br>$Code$ :</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> Drt <span class="title">SplitV</span> <span class="params">( Treap * rt , <span class="keyword">int</span> key )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( rt == <span class="literal">NULL</span> ) <span class="keyword">return</span> Drt ( <span class="literal">NULL</span> , <span class="literal">NULL</span> ) ;</span><br><span class="line">    Drt t ;</span><br><span class="line">    <span class="keyword">if</span> ( rt-&gt;val &lt;= key ) &#123;</span><br><span class="line">        t = SplitV ( rt-&gt;son[<span class="number">1</span>] , key ) ; rt-&gt;son[<span class="number">1</span>] = t.first ;</span><br><span class="line">        rt-&gt;maintain () ; t.first = rt ;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        t = SplitV ( rt-&gt;son[<span class="number">0</span>] , key ) ; rt-&gt;son[<span class="number">0</span>] = t.second ;</span><br><span class="line">        rt-&gt;maintain () ; t.second = rt ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -515,6 +516,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Equinox.github.io/2019/04/28/FhqTreap的区间翻转/" rel="prev" title="FhqTreap的区间翻转">
+                FhqTreap的区间翻转 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -625,7 +630,7 @@ var jiathis_config={
                 
                   <a href="/Equinox.github.io/archives">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
