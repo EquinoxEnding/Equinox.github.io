@@ -356,6 +356,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2019/05/05/浅谈线段树/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Equinox">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/12/31/5c29782e9fca0.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Equinox's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Equinox.github.io/2019/05/05/浅谈线段树/" itemprop="url">浅谈线段树</a></h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-05T11:05:20+08:00">2019-05-05</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Equinox.github.io/2019/05/05/浅谈线段树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/05/浅谈线段树/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/Equinox.github.io/2019/05/05/浅谈线段树/" class="leancloud_visitors" data-flag-title="浅谈线段树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>线段树一种初级数据结构(之前一度是高级),相信大多数学习数据结构的人都能熟练地掌握它.<br>线段树最初开发的意义是高效率地作用于区间操作(对数据的维护),但这个所谓的高效率也并不很高.但,相对于目前已经开发出来的一般性数据结构,线段树无疑是非常优秀且稳定的一个.<br>$\Theta ( n \times \log_2^{n} )$ 这是线段树建树操作的复杂度,对应地,每一次区间操作(修改和查询)都是 $\log_2^{n}$ 的复杂度,其中,n为元素个数(序列长度).对于这种复杂度,大概可承受的元素个数约为 $10^6$<br>以上数据范围以CCF在NOIP系列竞赛中使用的评测机为标准.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。[1]</span><br><span class="line">对于线段树中的每一个非叶子节点[a,b]，它的左儿子表示的区间为[a,(a+b)/2]，右儿子表示的区间为[(a+b)/2+1,b]。因此线段树是平衡二叉树，最后的子节点数目为N，即整个线段区间的长度。——来自百度百科</span><br></pre></td></tr></table></figure>
+<p>可以看出,线段树的一种非常自然的实现方式是递归.<br>先来一个线段树的ADT(以区间和为例)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">segtree</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> left , right , data , tag ;<span class="comment">//分别为左端点,右端点,区间信息,懒标记</span></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">size</span> <span class="params">()</span> </span>&#123; <span class="keyword">return</span> right - left + <span class="number">1</span> ; &#125;<span class="comment">//当前节点所管理的区间长度</span></span><br><span class="line">&#125;t[(N&lt;&lt;<span class="number">2</span>)];<span class="comment">//N为元素个数</span></span><br></pre></td></tr></table></figure></p>
+<p>线段树的空间复杂度有 $n \times 2$ 和 $n \times 4$ 两种.我这里使用了较为简便的第二种…<br>那么根据定义,建树的操作也比较显然:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid ( ( (l) + (r) ) &gt;&gt; 1 )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ls ( ( rt ) &lt;&lt; 1 )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rs ( ( rt ) &lt;&lt; 1 | 1 )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pushup(rt) t[rt].data = t[ls].data + t[rs].data <span class="comment">// 用儿子来更新父亲</span></span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span> <span class="params">(<span class="keyword">int</span> rt , <span class="keyword">int</span> l , <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    t[rt].left = l ; t[rt].right = <span class="number">1</span> ; t[rt].tag = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">if</span> ( l == r ) &#123; t[rt].data = v[l] ; <span class="keyword">return</span> ; &#125;<span class="comment">//到达叶子节点即赋为原序列中的值.</span></span><br><span class="line">    build ( ls , l , mid ) ; build ( rs , mid + <span class="number">1</span> , r ) ;<span class="comment">//递归建树</span></span><br><span class="line">    pushup ( rt ) ; <span class="keyword">return</span> ; <span class="comment">// 这里给出的是区间和线段树的pushup</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>线段树的区间查询与区间修改也十分易于理解:<br>从根节点开始,若当前节点恰好包含待操作区间的某一部分,更新/查询,否则,比较当前节点的区间中点与待操作区间的关系,左包含即向左递归,右包含即向右递归.<br>代码也十分简单(以区间和为例)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 宏的定义与第一份代码相同</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">upadte</span> <span class="params">(<span class="keyword">int</span> rt , <span class="keyword">int</span> ll , <span class="keyword">int</span> rr , <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = t[rt].left , r = t[rt].right ; <span class="comment">// 取出当前节点的左右端点作为比较依据</span></span><br><span class="line">    <span class="keyword">if</span> ( ll &lt;= l &amp;&amp; r &lt;= rr ) &#123; <span class="comment">// 若恰好包含待操作区间的某一部分</span></span><br><span class="line">        t[rt].data += t[rt].size () * val ; <span class="comment">// 处理当前节点的值,注意要乘上区间长度(考虑乘法分配律)</span></span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ( ll &lt;= mid ) update ( ls , ll , rr , val ) ; <span class="comment">// 若左边还有,向左递归</span></span><br><span class="line">    <span class="keyword">if</span> ( rr &gt; mid ) update ( rs , ll , rr , val ) ; <span class="comment">// 若右边还有,向右递归</span></span><br><span class="line">    pushup ( rt ) ; <span class="keyword">return</span> ; <span class="comment">// 别忘了pushup回去</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">query</span> <span class="params">(<span class="keyword">int</span> rt , <span class="keyword">int</span> ll , <span class="keyword">int</span> rr )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = t[rt].left , r = t[rt].right ;</span><br><span class="line">    <span class="keyword">if</span> ( ll &lt;= l &amp;&amp; r &lt;= rr ) &#123; ans += t[rt].data ; <span class="keyword">return</span> ; &#125; <span class="comment">// 查询与更新的区别之一,结果记录在全局变量ans中</span></span><br><span class="line">    <span class="keyword">if</span> ( ll &lt;= mid ) query ( ls , ll , rr ) ;</span><br><span class="line">    <span class="keyword">if</span> ( rr &gt; mid ) query ( rs , ll , rr ) ;</span><br><span class="line">    <span class="keyword">return</span> ; <span class="comment">// query不需要pushup,原因显然.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个时候,聪明的读者已经想到了,如果只进行上述修改,那么其余应该修改的节点(即恰好包含的那些节点的子树中的点)并没有被修改到.而如果每次都进行修改到叶子节点的操作,单次操作的时间复杂度就又退化成了$ \Theta ( n \times \log_2^{n} )$ 这并不是我们想要的.那么如何在保证正确性的情况下保证复杂度不退化呢?<br>细心的读者已经发现了,之前的 $ADT$ 中有一个懒标记 $tag$ 还并没有用到.<br>答案就在这里,使用懒标记 $(lazytag)$ 的方法来保证正确性和复杂度.<br>具体做法为,先按照给出代码的方式更新,当遇到恰好包含的节点时,更新节点值的同时更新标记.<br>那么标记是标记了,怎么用呢?<br>一个很自然的想法是,每次走到一个节点,若该节点的 $tag$ 不为 $0$ (即有过修改操作但未更新其子节点),就把标记下传给它的子节点(如果存在)并更新自身,不存在子节点的则直接更新自身.<br>这样,我们保证了每次访问到的节点一定是正确的,正确性得以保证.<br>复杂度呢?由于我们只是增加了几句赋值语句,所以并没有对复杂度造成什么影响,仍然为 $\Theta ( n \times \log_2^{n} )$  .<br>增加懒标记后的更新和查询代码如下:(依然以区间和为例子)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这份代码是加了取模的,因为题目要求取模,平时使用去掉取模运算即可</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span> <span class="params">( <span class="keyword">int</span> rt )</span> </span>&#123; <span class="comment">// 下传标记操作</span></span><br><span class="line">    t[ls].tag = ( t[rt].tag + t[ls].tag ) % mod ;</span><br><span class="line">    t[rs].tag = ( t[rt].tag + t[rs].tag ) % mod ; <span class="comment">// 把标记加给子节点</span></span><br><span class="line">    t[ls].data = ( t[ls].data + t[rt].tag * t[ls].size () ) % mod ;</span><br><span class="line">    t[rs].data = ( t[rs].data + t[rt].tag * t[rs].size () ) % mod ; <span class="comment">// 别忘了乘上区间长度</span></span><br><span class="line">    t[rt].tag = <span class="number">0</span> ; <span class="keyword">return</span> ; <span class="comment">// 别忘了把根节点的标记置为零,表示已经处理完标记.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span> <span class="params">(<span class="keyword">int</span> rt , <span class="keyword">int</span> ll , <span class="keyword">int</span> rr , <span class="keyword">int</span> wt)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = t[rt].left , r = t[rt].right ;</span><br><span class="line">    <span class="keyword">if</span> ( ll &lt;= l &amp;&amp; r &lt;= rr ) &#123;</span><br><span class="line">        t[rt].data = ( t[rt].data + wt * t[rt].size () ) % mod ;</span><br><span class="line">        t[rt].tag = ( t[rt].tag + wt ) % mod ; <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ( t[rt].tag != <span class="number">0</span> ) pushdown ( rt ) ; <span class="comment">// 遇到标记必须先下传</span></span><br><span class="line">    <span class="keyword">if</span> ( ll &lt;= mid ) update ( ls , ll , rr , wt ) ;</span><br><span class="line">    <span class="keyword">if</span> ( rr &gt; mid ) update ( rs , ll , rr , wt ) ;</span><br><span class="line">    pushup ( rt ) ; <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">query</span> <span class="params">(<span class="keyword">int</span> rt , <span class="keyword">int</span> ll , <span class="keyword">int</span> rr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = t[rt].left , r = t[rt].right ;</span><br><span class="line">    <span class="keyword">if</span> ( ll &lt;= l &amp;&amp; r &lt;= rr ) &#123; res = ( res + t[rt].data ) % mod ; <span class="keyword">return</span> ; &#125;</span><br><span class="line">    <span class="keyword">if</span> ( t[rt].tag != <span class="number">0</span> ) pushdown ( rt ) ; <span class="comment">// 先下传</span></span><br><span class="line">    <span class="keyword">if</span> ( ll &lt;= mid ) query ( ls , ll , rr ) ;</span><br><span class="line">    <span class="keyword">if</span> ( rr &gt; mid ) query ( rs , ll , rr ) ;</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>至此,区间和的线段树就已经完成了.<br>当然,线段树并不只有区间和一种形态,还有区间异或,区间取反,区间最大(小)值,权值线段树,可持久化(主席树),zkw等等.<br>但无论是哪一种线段树,都是以最基本的区间和线段树为蓝本构建的.只要熟练的掌握了区间和线段树,其余种类的线段树理解起来并不困难.<br>在这里附上区间最大(小)值线段树和区间取反线段树以及带有离散化的主席树的代码:<br>区间最大值:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ls (rt&lt;&lt;1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rs (rt&lt;&lt;1|1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid ((l+r)&gt;&gt;1) </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N (int)1e5+5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pushup(rt) t[rt].data=max(t[ls].data,t[rs].data)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max(a,b) a&gt;b?a:b</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,v[N];</span><br><span class="line"><span class="keyword">int</span> a,b,ans;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">segtree</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data,left,right,maxn;</span><br><span class="line">&#125;t[(N&lt;&lt;<span class="number">2</span>)];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> rt,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    t[rt].left=l;t[rt].right=r;</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">        t[rt].data=v[l];</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    build(ls,l,mid);build(rs,mid+<span class="number">1</span>,r);</span><br><span class="line">    pushup(rt);<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> rt)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l=t[rt].left,r=t[rt].right;</span><br><span class="line">    <span class="keyword">if</span>(a&lt;=l&amp;&amp;r&lt;=b)&#123;</span><br><span class="line">        ans=max(ans,t[rt].data);</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(a&lt;=mid) query(ls);</span><br><span class="line">    <span class="keyword">if</span>(b&gt;mid) query(rs);</span><br><span class="line">    <span class="keyword">return</span> ; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;v[i]);</span><br><span class="line">    build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);</span><br><span class="line">        query(<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">        ans=<span class="number">-0x3f3f3f3f</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>带离散化的主席树:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid ( ( l + r ) &gt;&gt; 1 )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for (int i = a ; i &lt;= b ; ++ i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pushup(rt) t[rt].data = t[t[rt].left].data + t[t[rt].right].data</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200010</span> ;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">seg</span> &#123;</span> <span class="keyword">int</span> left , right , data ; &#125; t [ ( N * <span class="number">20</span> ) ] ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n , m , v[N] , w[N] , cnt , rt[N] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span> <span class="params">(<span class="keyword">int</span> &amp; rt , <span class="keyword">int</span> l , <span class="keyword">int</span> r , <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    t[++cnt] = t[rt] ; rt = cnt ;</span><br><span class="line">    <span class="keyword">if</span> ( l == r ) &#123; ++ t[rt].data ; <span class="keyword">return</span> ; &#125;</span><br><span class="line">    <span class="keyword">if</span> ( val &lt;= mid ) insert ( t[rt].left , l , mid , val ) ;</span><br><span class="line">    <span class="keyword">else</span> insert ( t[rt].right , mid + <span class="number">1</span> , r , val ) ;</span><br><span class="line">    pushup  ( rt ) ; <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span> <span class="params">(<span class="keyword">int</span> u , <span class="keyword">int</span> v , <span class="keyword">int</span> l , <span class="keyword">int</span> r , <span class="keyword">int</span> rank)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( l == r ) <span class="keyword">return</span> l ;</span><br><span class="line">    <span class="keyword">int</span> T = t[t[v].left].data - t[t[u].left].data ;</span><br><span class="line">    <span class="keyword">if</span> ( rank &lt;= T ) <span class="keyword">return</span> query ( t[u].left , t[v].left , l , mid , rank ) ;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> query ( t[u].right , t[v].right , mid + <span class="number">1</span> , r , rank - T ) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> (<span class="string">"%lld%lld"</span> , &amp; n , &amp; m ) ;</span><br><span class="line">    rep ( i , <span class="number">1</span> , n ) <span class="built_in">scanf</span> (<span class="string">"%lld"</span> , &amp; v[i] ) , w[i] = v[i] ;</span><br><span class="line">    <span class="built_in">std</span>::sort ( w + <span class="number">1</span> , w + n + <span class="number">1</span> ) ;  w[<span class="number">0</span>] = <span class="built_in">std</span>::unique ( w + <span class="number">1</span> , w + n + <span class="number">1</span> ) - w - <span class="number">1</span> ;</span><br><span class="line">    rep ( i , <span class="number">1</span> , n ) v[i] = <span class="built_in">std</span>::lower_bound ( w + <span class="number">1</span> , w + w[<span class="number">0</span>] + <span class="number">1</span> , v[i] ) - w ;</span><br><span class="line">    rt[<span class="number">0</span>] = <span class="number">0</span> ; rep ( i , <span class="number">1</span> , n ) rt[i] = rt[i - <span class="number">1</span>] , insert ( rt[i] , <span class="number">1</span> , w[<span class="number">0</span>] , v[i] ) ;</span><br><span class="line">    rep ( i , <span class="number">1</span> , m ) &#123;</span><br><span class="line">        <span class="keyword">register</span> <span class="keyword">int</span> l , r , k , ans ;</span><br><span class="line">        <span class="built_in">scanf</span> (<span class="string">"%lld%lld%lld"</span> , &amp; l , &amp; r , &amp; k ) ;</span><br><span class="line">        ans = w [ query ( rt[l - <span class="number">1</span>] , rt[r] , <span class="number">1</span> , w[<span class="number">0</span>] , k ) ] ;</span><br><span class="line">        <span class="built_in">printf</span> (<span class="string">"%lld\n"</span> , ans ) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>区间取反:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid ( ( l + r ) &gt;&gt; 1 )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ls ( rt &lt;&lt; 1 )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rs ( rt &lt;&lt; 1 | 1 )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pushup(rt) t[rt].data = t[ls].data + t[rs].data</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 200005</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> k , a , b ;</span><br><span class="line"><span class="keyword">int</span> ans , n , m ;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">segtree</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> left , right , data , tag ; </span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> right - left + <span class="number">1</span> ; &#125;</span><br><span class="line">&#125;t[(N&lt;&lt;<span class="number">1</span>)];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span> <span class="params">(<span class="keyword">int</span> rt , <span class="keyword">int</span> l , <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	t[rt].left = l ; t[rt].right = r ; t[rt].tag = <span class="number">0</span> ;</span><br><span class="line">	<span class="keyword">if</span>( l == r ) &#123; t[rt].data = <span class="literal">false</span> ; <span class="keyword">return</span> ; &#125;</span><br><span class="line">	build ( ls , l , mid ) ; build ( rs , mid+<span class="number">1</span> , r ) ;</span><br><span class="line">	<span class="keyword">return</span> ; <span class="comment">// 因为一开始全是0所以就没有pushup,注意一下就好 </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> rt)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ( t[rt].tag ) &#123;</span><br><span class="line">		t[ls].tag ^= <span class="number">1</span> ;</span><br><span class="line">		t[rs].tag ^= <span class="number">1</span> ;</span><br><span class="line">		t[ls].data = t[ls].size() - t[ls].data ;</span><br><span class="line">		t[rs].data = t[rs].size() - t[rs].data ;</span><br><span class="line">		t[rt].tag = <span class="number">0</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line"></span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> rt)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> l = t[rt].left , r = t[rt].right ;</span><br><span class="line">	<span class="keyword">if</span>( a &lt;= l &amp;&amp; r &lt;= b )&#123;</span><br><span class="line">		t[rt].tag ^= <span class="number">1</span> ;</span><br><span class="line">		t[rt].data = t[rt].size() - t[rt].data ;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	pushdown ( rt ) ;</span><br><span class="line">	<span class="keyword">if</span> ( a &lt;= mid ) update ( ls ) ;</span><br><span class="line">	<span class="keyword">if</span> ( b &gt; mid ) update ( rs ) ;</span><br><span class="line">	pushup ( rt ) ; <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> rt)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> l = t[rt].left , r = t[rt].right ;</span><br><span class="line">	<span class="keyword">if</span> ( a &lt;= l &amp;&amp; r &lt;= b ) &#123; ans += t[rt].data ; <span class="keyword">return</span> ; &#125;</span><br><span class="line">	pushdown ( rt ) ;</span><br><span class="line">	<span class="keyword">if</span> ( a &lt;= mid ) query ( ls ) ;</span><br><span class="line">	<span class="keyword">if</span> ( b &gt; mid ) query ( rs ) ;</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span> , &amp; n , &amp; m ) ; build ( <span class="number">1</span> , <span class="number">1</span> , n ) ;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; ++ i)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span> , &amp; k , &amp; a , &amp; b ) ;</span><br><span class="line">		<span class="keyword">if</span>( k == <span class="number">0</span> ) update ( <span class="number">1</span> ) ;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			query ( <span class="number">1</span> ) ;</span><br><span class="line">			<span class="built_in">printf</span> ( <span class="string">"%d\n"</span> , ans ) ; </span><br><span class="line">			ans = <span class="number">0</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>由于某些种类的线段树我写的时候年代比较久远…所以代码风格以及写法可能不尽相同.各位将就着看吧.<br>水平有限,如有谬误,恳请斧正.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2019/04/28/飞行员配对方案问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1706,157 +1861,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2018/12/05/NOIP2018Day1T1/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Equinox">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/12/31/5c29782e9fca0.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Equinox's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Equinox.github.io/2018/12/05/NOIP2018Day1T1/" itemprop="url">NOIP2018Day1T1</a></h1>
-        
-
-        <div class="post-meta">
-          
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-05T19:07:16+08:00">2018-12-05</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/Equinox.github.io/2018/12/05/NOIP2018Day1T1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/05/NOIP2018Day1T1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/Equinox.github.io/2018/12/05/NOIP2018Day1T1/" class="leancloud_visitors" data-flag-title="NOIP2018Day1T1">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>春春是一名道路工程师，负责铺设一条长度为 $n$ 的道路。</p>
-<p>铺设道路的主要工作是填平下陷的地表。整段道路可以看作是 $n$ 块首尾相连的区域，一开始，第 $i$ 块区域下陷的深度为 $d_i$ 。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Equinox.github.io/2018/12/05/NOIP2018Day1T1/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1905,7 +1909,7 @@
                 
                   <a href="/Equinox.github.io/archives">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
