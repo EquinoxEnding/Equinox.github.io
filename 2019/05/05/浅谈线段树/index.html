@@ -146,17 +146,17 @@
   <meta name="keywords" content="Hexo, NexT">
 
 
-<meta name="description" content="线段树一种初级数据结构(之前一度是高级),相信大多数学习数据结构的人都能熟练地掌握它.线段树最初开发的意义是高效率地作用于区间操作(对数据的维护),但这个所谓的高效率也并不很高.但,相对于目前已经开发出来的一般性数据结构,线段树无疑是非常优秀且稳定的一个.$\Theta ( n \times \log_2^{n} )$ 这是线段树建树操作的复杂度,对应地,每一次区间操作(修改和查询)都是 $\lo">
+<meta name="description" content="浅谈线段树线段树一种初级数据结构(之前一度是高级),相信大多数学习数据结构的人都能熟练地掌握它.线段树最初开发的意义是高效率地作用于区间操作(对数据的维护),但这个所谓的高效率也并不很高.但,相对于目前已经开发出来的一般性数据结构,线段树无疑是非常优秀且稳定的一个.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈线段树">
 <meta property="og:url" content="http://github.com/Equinox.github.io/2019/05/05/浅谈线段树/index.html">
 <meta property="og:site_name" content="Equinox&#39;s Blog">
-<meta property="og:description" content="线段树一种初级数据结构(之前一度是高级),相信大多数学习数据结构的人都能熟练地掌握它.线段树最初开发的意义是高效率地作用于区间操作(对数据的维护),但这个所谓的高效率也并不很高.但,相对于目前已经开发出来的一般性数据结构,线段树无疑是非常优秀且稳定的一个.$\Theta ( n \times \log_2^{n} )$ 这是线段树建树操作的复杂度,对应地,每一次区间操作(修改和查询)都是 $\lo">
+<meta property="og:description" content="浅谈线段树线段树一种初级数据结构(之前一度是高级),相信大多数学习数据结构的人都能熟练地掌握它.线段树最初开发的意义是高效率地作用于区间操作(对数据的维护),但这个所谓的高效率也并不很高.但,相对于目前已经开发出来的一般性数据结构,线段树无疑是非常优秀且稳定的一个.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-05T03:06:09.488Z">
+<meta property="og:updated_time" content="2019-05-05T03:30:37.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈线段树">
-<meta name="twitter:description" content="线段树一种初级数据结构(之前一度是高级),相信大多数学习数据结构的人都能熟练地掌握它.线段树最初开发的意义是高效率地作用于区间操作(对数据的维护),但这个所谓的高效率也并不很高.但,相对于目前已经开发出来的一般性数据结构,线段树无疑是非常优秀且稳定的一个.$\Theta ( n \times \log_2^{n} )$ 这是线段树建树操作的复杂度,对应地,每一次区间操作(修改和查询)都是 $\lo">
+<meta name="twitter:description" content="浅谈线段树线段树一种初级数据结构(之前一度是高级),相信大多数学习数据结构的人都能熟练地掌握它.线段树最初开发的意义是高效率地作用于区间操作(对数据的维护),但这个所谓的高效率也并不很高.但,相对于目前已经开发出来的一般性数据结构,线段树无疑是非常优秀且稳定的一个.">
 
 
 
@@ -447,7 +447,9 @@
       
 
       
-        <p>线段树一种初级数据结构(之前一度是高级),相信大多数学习数据结构的人都能熟练地掌握它.<br>线段树最初开发的意义是高效率地作用于区间操作(对数据的维护),但这个所谓的高效率也并不很高.但,相对于目前已经开发出来的一般性数据结构,线段树无疑是非常优秀且稳定的一个.<br>$\Theta ( n \times \log_2^{n} )$ 这是线段树建树操作的复杂度,对应地,每一次区间操作(修改和查询)都是 $\log_2^{n}$ 的复杂度,其中,n为元素个数(序列长度).对于这种复杂度,大概可承受的元素个数约为 $10^6$<br>以上数据范围以CCF在NOIP系列竞赛中使用的评测机为标准.</p>
+        <h1 id="浅谈线段树"><a href="#浅谈线段树" class="headerlink" title="浅谈线段树"></a>浅谈线段树</h1><p>线段树一种初级数据结构(之前一度是高级),相信大多数学习数据结构的人都能熟练地掌握它.<br>线段树最初开发的意义是高效率地作用于区间操作(对数据的维护),但这个所谓的高效率也并不很高.但,相对于目前已经开发出来的一般性数据结构,线段树无疑是非常优秀且稳定的一个.</p>
+<a id="more"></a>
+<p>$\Theta ( n \times \log_2^{n} )$ 这是线段树建树操作的复杂度,对应地,每一次区间操作(修改和查询)都是 $\log_2^{n}$ 的复杂度,其中,n为元素个数(序列长度).对于这种复杂度,大概可承受的元素个数约为 $10^6$<br>以上数据范围以CCF在NOIP系列竞赛中使用的评测机为标准.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。[1]</span><br><span class="line">对于线段树中的每一个非叶子节点[a,b]，它的左儿子表示的区间为[a,(a+b)/2]，右儿子表示的区间为[(a+b)/2+1,b]。因此线段树是平衡二叉树，最后的子节点数目为N，即整个线段区间的长度。——来自百度百科</span><br></pre></td></tr></table></figure>
 <p>可以看出,线段树的一种非常自然的实现方式是递归.<br>先来一个线段树的ADT(以区间和为例)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">segtree</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> left , right , data , tag ;<span class="comment">//分别为左端点,右端点,区间信息,懒标记</span></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">size</span> <span class="params">()</span> </span>&#123; <span class="keyword">return</span> right - left + <span class="number">1</span> ; &#125;<span class="comment">//当前节点所管理的区间长度</span></span><br><span class="line">&#125;t[(N&lt;&lt;<span class="number">2</span>)];<span class="comment">//N为元素个数</span></span><br></pre></td></tr></table></figure></p>
 <p>线段树的空间复杂度有 $n \times 2$ 和 $n \times 4$ 两种.我这里使用了较为简便的第二种…<br>那么根据定义,建树的操作也比较显然:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid ( ( (l) + (r) ) &gt;&gt; 1 )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ls ( ( rt ) &lt;&lt; 1 )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rs ( ( rt ) &lt;&lt; 1 | 1 )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pushup(rt) t[rt].data = t[ls].data + t[rs].data <span class="comment">// 用儿子来更新父亲</span></span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span> <span class="params">(<span class="keyword">int</span> rt , <span class="keyword">int</span> l , <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    t[rt].left = l ; t[rt].right = <span class="number">1</span> ; t[rt].tag = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">if</span> ( l == r ) &#123; t[rt].data = v[l] ; <span class="keyword">return</span> ; &#125;<span class="comment">//到达叶子节点即赋为原序列中的值.</span></span><br><span class="line">    build ( ls , l , mid ) ; build ( rs , mid + <span class="number">1</span> , r ) ;<span class="comment">//递归建树</span></span><br><span class="line">    pushup ( rt ) ; <span class="keyword">return</span> ; <span class="comment">// 这里给出的是区间和线段树的pushup</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -576,8 +578,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -637,6 +648,22 @@ var jiathis_config={
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#浅谈线段树"><span class="nav-number">1.</span> <span class="nav-text">浅谈线段树</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
