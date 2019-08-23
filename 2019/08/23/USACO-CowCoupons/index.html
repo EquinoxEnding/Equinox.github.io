@@ -146,26 +146,24 @@
   <meta name="keywords" content="Hexo, NexT">
 
 
-<meta name="description" content="题目描述在网友的国度中共有 $n$ 种不同面额的货币，第 $i$ 种货币的面额为 $a[i]$，你可以假设每一种货币都有无穷多张。为了方便，我们把货币种数为 $n$、面额数组为 $a[1..n]$ 的货币系统记作 $(n,a)$。 在一个完善的货币系统中，每一个非负整数的金额 $x$ 都应该可以被表示出，即对每一个非负整数 $x$，都存在 $n$ 个非负整数 $t[i]$ 满足 $a[i] \ti">
+<meta name="description" content="USACO[CowCoupons] 这题是个非常棒的贪心题,唯一的缺点是数据太水了,强烈要求加强数据.(当然我知道在这里喊不会有人鸟我…)这个题相信有些人的第一思路是按优惠后价格排序,能买就买,但这显然是错误的.比如你有两头牛和一张优惠券,两头牛优惠前和优惠后的价格分别是${50,25}$和${10000,1}$.这样应该很显然.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NOIP2018Day1T2">
-<meta property="og:url" content="http://github.com/Equinox.github.io/2018/12/05/NOIP2018Day1T2/index.html">
+<meta property="og:title" content="USACO[CowCoupons]">
+<meta property="og:url" content="http://github.com/Equinox.github.io/2019/08/23/USACO-CowCoupons/index.html">
 <meta property="og:site_name" content="Phecda&#39;s Blog">
-<meta property="og:description" content="题目描述在网友的国度中共有 $n$ 种不同面额的货币，第 $i$ 种货币的面额为 $a[i]$，你可以假设每一种货币都有无穷多张。为了方便，我们把货币种数为 $n$、面额数组为 $a[1..n]$ 的货币系统记作 $(n,a)$。 在一个完善的货币系统中，每一个非负整数的金额 $x$ 都应该可以被表示出，即对每一个非负整数 $x$，都存在 $n$ 个非负整数 $t[i]$ 满足 $a[i] \ti">
+<meta property="og:description" content="USACO[CowCoupons] 这题是个非常棒的贪心题,唯一的缺点是数据太水了,强烈要求加强数据.(当然我知道在这里喊不会有人鸟我…)这个题相信有些人的第一思路是按优惠后价格排序,能买就买,但这显然是错误的.比如你有两头牛和一张优惠券,两头牛优惠前和优惠后的价格分别是${50,25}$和${10000,1}$.这样应该很显然.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://cdn.luogu.org/upload/pic/43160.png">
-<meta property="og:updated_time" content="2018-12-05T11:37:38.509Z">
+<meta property="og:updated_time" content="2019-08-23T11:26:40.599Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NOIP2018Day1T2">
-<meta name="twitter:description" content="题目描述在网友的国度中共有 $n$ 种不同面额的货币，第 $i$ 种货币的面额为 $a[i]$，你可以假设每一种货币都有无穷多张。为了方便，我们把货币种数为 $n$、面额数组为 $a[1..n]$ 的货币系统记作 $(n,a)$。 在一个完善的货币系统中，每一个非负整数的金额 $x$ 都应该可以被表示出，即对每一个非负整数 $x$，都存在 $n$ 个非负整数 $t[i]$ 满足 $a[i] \ti">
-<meta name="twitter:image" content="https://cdn.luogu.org/upload/pic/43160.png">
+<meta name="twitter:title" content="USACO[CowCoupons]">
+<meta name="twitter:description" content="USACO[CowCoupons] 这题是个非常棒的贪心题,唯一的缺点是数据太水了,强烈要求加强数据.(当然我知道在这里喊不会有人鸟我…)这个题相信有些人的第一思路是按优惠后价格排序,能买就买,但这显然是错误的.比如你有两头牛和一张优惠券,两头牛优惠前和优惠后的价格分别是${50,25}$和${10000,1}$.这样应该很显然.">
 
 
 
 
 
 
-  <link rel="canonical" href="http://github.com/Equinox.github.io/2018/12/05/NOIP2018Day1T2/">
+  <link rel="canonical" href="http://github.com/Equinox.github.io/2019/08/23/USACO-CowCoupons/">
 
 
 
@@ -174,7 +172,7 @@
     sidebar: "",
   };
 </script>
-  <title>NOIP2018Day1T2 | Phecda's Blog</title>
+  <title>USACO[CowCoupons] | Phecda's Blog</title>
   
 
 
@@ -361,7 +359,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2018/12/05/NOIP2018Day1T2/">
+    <link itemprop="mainEntityOfPage" href="http://github.com/Equinox.github.io/Equinox.github.io/2019/08/23/USACO-CowCoupons/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Phecda">
@@ -378,7 +376,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NOIP2018Day1T2</h1>
+          <h1 class="post-title" itemprop="name headline">USACO[CowCoupons]</h1>
         
 
         <div class="post-meta">
@@ -391,7 +389,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-05T19:20:55+08:00">2018-12-05</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-23T19:26:11+08:00">2019-08-23</time>
             
 
             
@@ -409,8 +407,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/Equinox.github.io/2018/12/05/NOIP2018Day1T2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/05/NOIP2018Day1T2/" itemprop="commentCount"></span>
+                <a href="/Equinox.github.io/2019/08/23/USACO-CowCoupons/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/23/USACO-CowCoupons/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -418,7 +416,7 @@
 
           
           
-             <span id="/Equinox.github.io/2018/12/05/NOIP2018Day1T2/" class="leancloud_visitors" data-flag-title="NOIP2018Day1T2">
+             <span id="/Equinox.github.io/2019/08/23/USACO-CowCoupons/" class="leancloud_visitors" data-flag-title="USACO[CowCoupons]">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -449,25 +447,10 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在网友的国度中共有 $n$ 种不同面额的货币，第 $i$ 种货币的面额为 $a[i]$，你可以假设每一种货币都有无穷多张。为了方便，我们把货币种数为 $n$、面额数组为 $a[1..n]$ 的货币系统记作 $(n,a)$。</p>
-<p>在一个完善的货币系统中，每一个非负整数的金额 $x$ 都应该可以被表示出，即对每一个非负整数 $x$，都存在 $n$ 个非负整数 $t[i]$ 满足 $a[i] \times t[i]$ 的和为 $x$。然而， 在网友的国度中，货币系统可能是不完善的，即可能存在金额 xx不能被该货币系统表示出。例如在货币系统 $n=3, a=[2,5,9]$ 中，金额 $1,3$ 就无法被表示出来。</p>
+        <p><a href="https://www.luogu.org/problem/P3045" target="_blank" rel="noopener">USACO[CowCoupons]</a></p>
+<p>这题是个非常棒的贪心题,唯一的缺点是数据太水了,强烈要求加强数据.(当然我知道在这里喊不会有人鸟我…)<br>这个题相信有些人的第一思路是按优惠后价格排序,能买就买,但这显然是错误的.<br>比如你有两头牛和一张优惠券,两头牛优惠前和优惠后的价格分别是${50,25}$和${10000,1}$.<br>这样应该很显然.</p>
 <a id="more"></a>
-<p>两个货币系统 $(n,a)$ 和 $(m,b)$ 是等价的，当且仅当对于任意非负整数 $x$，它要么均可以被两个货币系统表出，要么不能被其中任何一个表出。</p>
-<p>现在网友们打算简化一下货币系统。他们希望找到一个货币系统 $(m,b)$，满足 $(m,b)$ 与原来的货币系统 $(n,a)$ 等价，且 $m$ 尽可能的小。他们希望你来协助完成这个艰巨的任务：找到最小的 $m$。</p>
-<h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p>输入文件的第一行包含一个整数 $T$，表示数据的组数。</p>
-<p>接下来按照如下格式分别给出 TT 组数据。 每组数据的第一行包含一个正整数 $n$。接下来一行包含 $n$ 个由空格隔开的正整数 $a[i]$。</p>
-<p>输出文件共有 $T$ 行，对于每组数据，输出一行一个正整数，表示所有与 $(n,a)$ 等价的货币系统 $(m,b)$ 中，最小的 $m$ 。</p>
-<h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p>输入样例1:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2 </span><br><span class="line">4 </span><br><span class="line">3 19 10 6 </span><br><span class="line">5 </span><br><span class="line">11 29 13 19 17</span><br></pre></td></tr></table></figure>
-<p>输出样例1:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2   </span><br><span class="line">5</span><br></pre></td></tr></table></figure>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>在第一组数据中，货币系统 $(2, [3,10])$ 和给出的货币系统 $(n, a)$ 等价，并可以验证不存在 $m &lt; 2$ 的等价的货币系统，因此答案为 $2$ 。 在第二组数据中，可以验证不存在 $m &lt; n$  的等价的货币系统，因此答案为 $5$ 。</p>
-<p>【数据范围与约定】</p>
-<p><img src="https://cdn.luogu.org/upload/pic/43160.png" alt="img"></p>
-<p>对于 $100\%$ 的数据，满足 $1 ≤ T ≤ 20, n,a[i] ≥ 1$</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>简略题意:给定一个集合 $A$ 让你找出一个集合 $B$ 使得 $A$ 中的所有元素都能被 $B$ 中的一个和多个元素表示出来 $,$ 要求 $B$ 的元素尽量少 $,$ 求 $B$ 中最少的元素个数</p>
-<p>先排个序 $,$ 一个数字一定只能由比它本身小的数字通过累加得到 $,$ 枚举 $A$ 中的所有元素 $,$ 然后用判定性完全背包来确定哪一个数字能被表示 $,$ 每有一个数字能被表示 $,$ 就把原先等于 $n$ 的 $ans–$ 最后输出 $ans$ 就完了</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e2</span> + <span class="number">10</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">2e4</span> + <span class="number">5e3</span> + <span class="number">5</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T , a[N] ;</span><br><span class="line"><span class="keyword">int</span> cnt , n ;</span><br><span class="line"><span class="keyword">int</span> f[M] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> (<span class="string">"%d"</span> , &amp; T ) ;</span><br><span class="line">    <span class="keyword">while</span> ( T -- )&#123;</span><br><span class="line">        <span class="built_in">scanf</span> (<span class="string">"%d"</span> , &amp; n ) ; <span class="built_in">memset</span> ( f , <span class="number">0</span> , <span class="keyword">sizeof</span> ( f ) ) ;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i) <span class="built_in">scanf</span> (<span class="string">"%d"</span> , &amp; a[i]) ;</span><br><span class="line">        <span class="built_in">std</span>::sort ( a + <span class="number">1</span> , a + n + <span class="number">1</span> ) ; f[<span class="number">0</span>] = <span class="number">1</span> ; cnt = n ;<span class="comment">// 0 显然可以被任何集合表示</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++ i)&#123;</span><br><span class="line">            <span class="keyword">if</span> ( f[a[i]] ) &#123; -- cnt ; <span class="keyword">continue</span> ; &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = a[i] ; j &lt;= a[n] ; ++ j)</span><br><span class="line">                f[j] = f[j] | f[j-a[i]] ; <span class="comment">//如果 j-a[i] 能被表示,那么显然j也能被表示</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span> (<span class="string">"%d\n"</span> , cnt ) ;</span><br><span class="line">    &#125;</span><br><span class="line">    system (<span class="string">"pause"</span>) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那我们就可以考虑去在哪些牛身上用优惠券是最值的.一个思路是先按上面的做法取$k$头牛,然后再对剩下的牛逐一考虑是否把优惠券用到这头牛上更优.<br>一个非常简单的思路是回溯,但这显然不太行是叭…复杂度上天系列.<br>那我们考虑,一头牛相比另一头牛使用优惠券更优的条件是如何的.<br>不难发现,如果对于两头牛$i,j$,有$$c_i+p_j &lt; c_j + p_i$$那么显然把优惠券使用在$i$这头牛会比较优.<br>那么移一下项,发现这个东西变成了这个$$p_i - c_i &gt; p_j - c_j$$,所以我们把之前每个先钦定使用优惠券的牛的这个东西压入小根堆中,再逐一考虑后面的牛即可.<br>不过判断的时候我还是用了最开始的结论.需要注意的是,在考虑后几头牛的时候,要按原价排一遍序,因为如果没有优惠券了,而你还有钱,显然这样买比较优.<br>$Code:$<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MEM(x,y) memset ( x , y , sizeof ( x ) )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for (int i = a ; i &lt;= b ; ++ i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> per(i,a,b) for (int i = a ; i &gt;= b ; -- i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pii pair <span class="meta-string">&lt; int , int &gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> X first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Y second</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::pair ;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::max ;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::min ;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::priority_queue ;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">vector</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">5e4</span> + <span class="number">100</span> ;</span><br><span class="line"></span><br><span class="line">priority_queue &lt; pii , <span class="built_in">vector</span> &lt; pii &gt; , <span class="built_in">std</span>::greater &lt; pii &gt; &gt; q ;</span><br><span class="line"><span class="keyword">int</span> n , k , m , tot , ans ;</span><br><span class="line">pii cow[N] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">cmp</span> <span class="params">(pii a , pii b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( a.Y != b.Y ) <span class="keyword">return</span> a.Y &lt; b.Y ;</span><br><span class="line">    <span class="keyword">return</span> a.X &lt; b.X ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> (<span class="string">"%lld%lld%lld"</span> , &amp; n , &amp; k , &amp; m ) ; ans = tot = <span class="number">0</span> ;</span><br><span class="line">    rep ( i , <span class="number">1</span> , n ) <span class="built_in">scanf</span> (<span class="string">"%lld%lld"</span> , &amp; cow[i].Y , &amp; cow[i].X ) ; <span class="comment">// P C</span></span><br><span class="line">    <span class="built_in">std</span>::sort ( cow + <span class="number">1</span> , cow + n + <span class="number">1</span> ) ;</span><br><span class="line">    rep ( i , <span class="number">1</span> , k ) &#123;</span><br><span class="line">        tot += cow[i].X ; ++ ans ;</span><br><span class="line">        <span class="keyword">if</span> ( tot &gt; m ) &#123; <span class="built_in">printf</span> (<span class="string">"%lld\n"</span> , i - <span class="number">1</span> ) ; <span class="keyword">return</span> <span class="number">0</span> ; &#125;</span><br><span class="line">        q.push ( &#123; cow[i].Y - cow[i].X , i &#125; ) ;</span><br><span class="line">    &#125;</span><br><span class="line">    ans = k ; <span class="built_in">std</span>::sort ( cow + k + <span class="number">1</span> , cow + n + <span class="number">1</span> , cmp ) ;</span><br><span class="line">    rep ( i , k + <span class="number">1</span> , n ) &#123;</span><br><span class="line">        pii tmp = q.top () ;</span><br><span class="line">        <span class="keyword">if</span> ( cow[tmp.Y].X + cow[i].Y &gt; cow[tmp.Y].Y + cow[i].X ) &#123;</span><br><span class="line">            ++ ans ; tot -= cow[tmp.Y].X ;</span><br><span class="line">            tot += ( cow[i].X + cow[tmp.Y].Y ) ;</span><br><span class="line">            q.pop () ; q.push ( &#123; cow[i].Y - cow[i].X , i &#125; ) ;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; ++ ans ; tot += cow[i].Y ; &#125;</span><br><span class="line">        <span class="keyword">if</span> ( tot &gt; m ) &#123; <span class="built_in">printf</span> (<span class="string">"%lld\n"</span> , ans - <span class="number">1</span> ) ; <span class="keyword">return</span> <span class="number">0</span> ; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span> (<span class="string">"%lld\n"</span> , n ) ;</span><br><span class="line">    system (<span class="string">"pause"</span>) ; <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -495,8 +478,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Equinox.github.io/2018/12/05/NOIP2018Day1T1/" rel="next" title="NOIP2018Day1T1">
-                <i class="fa fa-chevron-left"></i> NOIP2018Day1T1
+              <a href="/Equinox.github.io/2019/08/23/CodeForces1204C/" rel="next" title="CodeForces1204C">
+                <i class="fa fa-chevron-left"></i> CodeForces1204C
               </a>
             
           </div>
@@ -504,10 +487,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Equinox.github.io/2019/04/03/网络流小结/" rel="prev" title="网络流小结">
-                网络流小结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -591,17 +570,8 @@ var jiathis_config={
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -666,22 +636,6 @@ var jiathis_config={
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入输出格式"><span class="nav-number">2.</span> <span class="nav-text">输入输出格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入输出样例"><span class="nav-number">3.</span> <span class="nav-text">输入输出样例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">4.</span> <span class="nav-text">说明</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number"></span> <span class="nav-text">Solution:</span></a></li></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -850,9 +804,9 @@ var jiathis_config={
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://github.com/Equinox.github.io/2018/12/05/NOIP2018Day1T2/';
-        this.page.identifier = '2018/12/05/NOIP2018Day1T2/';
-        this.page.title = 'NOIP2018Day1T2';
+        this.page.url = 'http://github.com/Equinox.github.io/2019/08/23/USACO-CowCoupons/';
+        this.page.identifier = '2019/08/23/USACO-CowCoupons/';
+        this.page.title = 'USACO[CowCoupons]';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
