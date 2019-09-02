@@ -146,17 +146,17 @@
   <meta name="keywords" content="Hexo, NexT">
 
 
-<meta name="description" content="#FhqTreap的区间翻转  学 $Fhq$ 就是为了尽量不去写某毒瘤数据结构,所以自然要来杠一杠某数据结构的经典操作:区间反转 听起来玄乎,但只需要一个小 $trick$ 就行了:把原来的区间以下标作为权值建成 $Treap$ , 这样整棵 $Treap$ 的中序遍历就是原区间.">
+<meta name="description" content="FhqTreap的区间翻转学 $Fhq$ 就是为了尽量不去写某毒瘤数据结构,所以自然要来杠一杠某数据结构的经典操作:区间反转 听起来玄乎,但只需要一个小 $trick$ 就行了:把原来的区间以下标作为权值建成 $Treap$ , 这样整棵 $Treap$ 的中序遍历就是原区间.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FhqTreap的区间翻转">
 <meta property="og:url" content="http://github.com/Equinox.github.io/2019/04/28/FhqTreap的区间翻转/index.html">
 <meta property="og:site_name" content="Phecda&#39;s Blog">
-<meta property="og:description" content="#FhqTreap的区间翻转  学 $Fhq$ 就是为了尽量不去写某毒瘤数据结构,所以自然要来杠一杠某数据结构的经典操作:区间反转 听起来玄乎,但只需要一个小 $trick$ 就行了:把原来的区间以下标作为权值建成 $Treap$ , 这样整棵 $Treap$ 的中序遍历就是原区间.">
+<meta property="og:description" content="FhqTreap的区间翻转学 $Fhq$ 就是为了尽量不去写某毒瘤数据结构,所以自然要来杠一杠某数据结构的经典操作:区间反转 听起来玄乎,但只需要一个小 $trick$ 就行了:把原来的区间以下标作为权值建成 $Treap$ , 这样整棵 $Treap$ 的中序遍历就是原区间.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-28T08:47:18.920Z">
+<meta property="og:updated_time" content="2019-09-02T13:37:01.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FhqTreap的区间翻转">
-<meta name="twitter:description" content="#FhqTreap的区间翻转  学 $Fhq$ 就是为了尽量不去写某毒瘤数据结构,所以自然要来杠一杠某数据结构的经典操作:区间反转 听起来玄乎,但只需要一个小 $trick$ 就行了:把原来的区间以下标作为权值建成 $Treap$ , 这样整棵 $Treap$ 的中序遍历就是原区间.">
+<meta name="twitter:description" content="FhqTreap的区间翻转学 $Fhq$ 就是为了尽量不去写某毒瘤数据结构,所以自然要来杠一杠某数据结构的经典操作:区间反转 听起来玄乎,但只需要一个小 $trick$ 就行了:把原来的区间以下标作为权值建成 $Treap$ , 这样整棵 $Treap$ 的中序遍历就是原区间.">
 
 
 
@@ -447,14 +447,13 @@
       
 
       
-        <p>#FhqTreap的区间翻转 </p>
-<p>学 $Fhq$ 就是为了尽量不去写某毒瘤数据结构,所以自然要来杠一杠某数据结构的经典操作:区间反转</p>
+        <h1 id="FhqTreap的区间翻转"><a href="#FhqTreap的区间翻转" class="headerlink" title="FhqTreap的区间翻转"></a>FhqTreap的区间翻转</h1><p>学 $Fhq$ 就是为了尽量不去写某毒瘤数据结构,所以自然要来杠一杠某数据结构的经典操作:区间反转</p>
 <p>听起来玄乎,但只需要一个小 $trick$ 就行了:把原来的区间以下标作为权值建成 $Treap$ , 这样整棵 $Treap$ 的中序遍历就是原区间.</p>
 <a id="more"></a>
 <p>按照这种方法建树,是进行区间操作的第一步.接下来我们考虑如何去在 $\Theta ( \log_2^{n}) $ 的时间内完成这件事.</p>
 <p>一个基本的思路是将区间 $Split$ 为 $[1,l-1],[l,r],[r+1,n]$ 三部分,对中间的 $[l,r]$ 进行反转</p>
 <p>反转的具体操作是从根到叶子把每个节点的左右儿子互换</p>
-<p>显然,这样复杂度十分糟糕,甚至达到了暴力都比不上的 $\Theta ( n \times \log_2^{n} )$ </p>
+<p>显然,这样复杂度十分糟糕,甚至达到了暴力都比不上的 $\Theta ( n \times \log_2{n} )$ </p>
 <p>所以,我们必须考虑去减少我们的操作次数.</p>
 <p>这里我们借鉴一下之前学习线段树时的 $trick$ : $lazytag$ (我不信你都学平衡树了还不会线段树)</p>
 <p>聪明的你应该已经想到了,对没错,就是通过打 $lazytag$ 来减少我们的操作,想必原理也不用赘述</p>
@@ -586,8 +585,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -652,6 +660,22 @@ var jiathis_config={
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FhqTreap的区间翻转"><span class="nav-number">1.</span> <span class="nav-text">FhqTreap的区间翻转</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
